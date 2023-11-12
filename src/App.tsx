@@ -7,8 +7,11 @@ import { HiOutlineHome } from 'react-icons/hi'
 import { GrOrganization } from 'react-icons/gr'
 import { BsPerson } from 'react-icons/bs'
 import { FaUsers } from 'react-icons/fa'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 function App() {
+
+  const [collapsed, setCollapsed] = useState(false)
 
   return (
     <Layout className='container'>
@@ -17,12 +20,13 @@ function App() {
           backgroundColor: "white"
         }}
       >
-        <div className="brand">
-          Antd-Dashboard
+        <div style={{display: "flex", alignItems: "center"}}>
+          <GiHamburgerMenu onClick={() => setCollapsed(!collapsed)} size={28} style={{ marginRight: 20 }} />
+          <div className="brand"> Antd-Dashboard </div>
         </div>
       </Header>
       <Layout>
-        <Sider theme='light'>
+        <Sider collapsed={collapsed} theme='light'>
           <Menu 
             mode='inline'
             items = {[
