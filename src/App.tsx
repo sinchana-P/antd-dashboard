@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Card, Layout, Menu, Space, Typography } from 'antd'
+import { Button, Card, Col, Divider, Layout, Menu, Row, Space, Typography } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
@@ -87,6 +87,21 @@ function App() {
             </Card>
             
           </Space>
+          <Divider />
+
+          <Row gutter={10}>
+            <Col span={6}>
+              <Card>
+                <Typography.Title>Something</Typography.Title>
+              </Card>
+            </Col>
+            <Col span={18}>
+              <Card>
+                <Typography.Title>Something</Typography.Title>
+              </Card>
+            </Col>
+          </Row>
+
         </Content>
       </Layout>
     </Layout>
@@ -94,3 +109,6 @@ function App() {
 }
 
 export default App
+
+
+// gutter : for spacing
