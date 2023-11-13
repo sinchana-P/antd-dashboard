@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Card, Col, Divider, Layout, Menu, Row, Space, Typography } from 'antd'
+import { Anchor, Button, Card, Col, Divider, Layout, Menu, Row, Space, Table, Typography } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
@@ -9,6 +9,8 @@ import { BsPerson } from 'react-icons/bs'
 import { FaUsers } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiOutlineMoneyCollect } from 'react-icons/ai'
+// import Link from 'antd/es/typography/Link';
+const { Link } = Anchor;
 
 function App() {
 
@@ -97,8 +99,18 @@ function App() {
             </Col>
             <Col span={18}>
               <Card>
-                <Typography.Title>Something</Typography.Title>
+                <Anchor>
+                  <Link href="#test" title='link 1' />
+                  <Link href="#test" title='link 2' />
+                  <Link href="#test" title='link 3' />
+                </Anchor>
               </Card>
+            </Col>
+          </Row>
+
+          <Row gutter={10} style={{ marginTop: 10 }}>
+            <Col span={18}>
+              <Table />
             </Col>
           </Row>
 
@@ -112,3 +124,4 @@ export default App
 
 
 // gutter : for spacing
+
