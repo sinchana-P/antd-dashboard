@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Anchor, Button, Card, Col, Divider, Layout, Menu, Row, Space, Table, Typography } from 'antd'
+import { Anchor, Button, Card, Col, Divider, Layout, Menu, Row, Space, Table, Tag, Typography } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
@@ -11,6 +11,24 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiOutlineMoneyCollect } from 'react-icons/ai'
 // import Link from 'antd/es/typography/Link';
 const { Link } = Anchor;
+import { faker } from '@faker-js/faker'
+import ButtonGroup from 'antd/es/button/button-group';
+
+const generateData = () => {
+  const dat = [];
+
+  for(let i=0; i<34; i++){
+    dat.push({
+      id: faker.datatype.number(1000),
+      name: faker.name.fullName(),
+      email: faker.internet.email(),
+      status: Math.random() > 0.5 ? true: false
+    })
+  }
+  return dat
+}
+
+const data = generateData()
 
 function App() {
 
@@ -110,7 +128,37 @@ function App() {
 
           <Row gutter={10} style={{ marginTop: 10 }}>
             <Col span={18}>
-              <Table />
+              <Table dataSource={data} columns={[{
+                dataIndex: "id",
+                title: "ID",
+                key: "id",
+                fixed: true,
+              },
+              {
+                dataIndex: "name",
+                title: "name",
+                key: "name"
+              },
+              {
+                dataIndex: "email",
+                title: "Email Id",
+                key: "email" 
+              },
+              {
+                dataIndex: "status",
+                title: "Status",
+                render: (val) => val ? <Tag>Active</Tag> : <Tag>Not Active</Tag>
+              },
+              {
+                title: "Actions",
+                render: () => {
+                  return <ButtonGroup>
+                          <Button>Edit</Button>
+                          <Button type='primary' danger>Delete</Button>
+                        </ButtonGroup>;
+                },
+              }
+              ]}/>
             </Col>
           </Row>
 
