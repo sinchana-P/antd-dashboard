@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, Form, Input, Layout, List, Menu, Modal, Row, Space, Steps, Table, Tag, TimePicker, Typography, notification } from 'antd'
+import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, FloatButton, Form, Input, Layout, List, Menu, Modal, Row, Space, Steps, Table, Tag, TimePicker, Typography, notification } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
 import { HiOutlineHome } from 'react-icons/hi'
-import { GrOrganization } from 'react-icons/gr'
+import { GrAdd, GrOrganization } from 'react-icons/gr'
 import { BsPerson } from 'react-icons/bs'
 import { FaUsers } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
@@ -114,6 +114,7 @@ function App() {
           <Divider />
 
           <Card>
+            <FloatButton icon={<GrAdd />} />
             <Button
               onClick={() => {
                 notification.success({
