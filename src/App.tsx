@@ -1,5 +1,6 @@
+import * as DescriptorD from "node_modules\@faker-js\faker\dist\types\locales\it\company\descriptor.d";
 import { useState } from 'react'
-import { Anchor, Button, Card, Col, Divider, Layout, Menu, Row, Space, Table, Tag, Typography } from 'antd'
+import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, Form, Input, Layout, List, Menu, Row, Space, Steps, Table, Tag, TimePicker, Typography } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
@@ -13,6 +14,7 @@ import { AiOutlineMoneyCollect } from 'react-icons/ai'
 const { Link } = Anchor;
 import { faker } from '@faker-js/faker'
 import ButtonGroup from 'antd/es/button/button-group';
+import dayjs from 'dayjs';
 
 const generateData = () => {
   const dat = [];
@@ -108,6 +110,93 @@ function App() {
             
           </Space>
           <Divider />
+
+          <Card>
+
+            {/* <List  
+              bordered
+              dataSource={data}
+              renderItem={(item) => {
+                return <List.Item>{item.name}</List.Item>
+              }}
+            /> */}
+            <List  
+              bordered
+              dataSource={data.slice(0, 3)}
+              renderItem={(item) => {
+                return <List.Item>
+                  <Descriptions title={"User Details"}>
+                    <Descriptions.Item label={"Name"}>
+                        {item.name}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={"Email"}>
+                        {item.email}
+                    </Descriptions.Item>
+                    <Descriptions.Item label={"Status"}>
+                        {item.status ? "Active" : "Not Active"}
+                    </Descriptions.Item>
+                  </Descriptions>
+                </List.Item>
+              }}
+            />
+
+            <List>
+              <List.Item>Hello</List.Item>
+              <List.Item>Hello0</List.Item>
+              <List.Item>Hello1</List.Item>
+            </List>
+
+            <Descriptions bordered title={"Users Data"}>
+              <Descriptions.Item span={3} label={"Name"}>Jay</Descriptions.Item>
+              <Descriptions.Item span={2} label={"Roll"}>43</Descriptions.Item>
+              <Descriptions.Item span={2} label={"Address"}>xyz</Descriptions.Item>
+              <Descriptions.Item span={2} label={"home"}>abc</Descriptions.Item>
+            </Descriptions>
+            <Form 
+              onFinish={(values) => {
+                console.log(values)
+              }}
+              layout='vertical'>
+              <Empty />  
+              <Avatar 
+                size={"large"}
+                src="https://d1fdloi71mui9q.cloudfront.net/C0tNgh8Sfq80BH4G5d7w_JtyQdSwH09L9z6by" />  
+              <Form.Item name={"name"} label={"Name"}>
+                <Input />
+              </Form.Item>
+              <Form.Item name={"email"} label={"Email"}>
+                <Input type='email' />
+              </Form.Item>
+              <Form.Item>
+                <TimePicker defaultValue={dayjs('13:30:56', 'HH:mm:ss')} />;
+              </Form.Item>
+              <Form.Item name={"password"} label={"Password"}>
+                <Input type='password' />
+              </Form.Item>
+              <Form.Item>
+                <Button htmlType='submit' type='primary'>Sign Up</Button>              </Form.Item>
+            </Form>
+          </Card>
+
+          <Card>
+            <Steps 
+              current = {1}
+              items = {[
+                {
+                  title: "Signup",
+                  description: "Please Sign Up"
+                },
+                {
+                  title: "Buy Subscription",
+                  description: "Buy Some Subscription"
+                },
+                {
+                  title: "Buy Subscription",
+                  description: "Buy Some Subscription"
+                }
+              ]}
+            />
+          </Card>
 
           <Row gutter={10}>
             <Col span={6}>
