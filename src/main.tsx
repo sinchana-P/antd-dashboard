@@ -11,7 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       theme={{
         token: {
           colorPrimary: "#2123bf",
-          
+          colorBgLayout: "#313131",
+          colorBgContainer: "#1a1a1a",
+          colorText: "white"
         },
       }}>
       <App />

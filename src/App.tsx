@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, Form, Input, Layout, List, Menu, Modal, Row, Space, Steps, Table, Tag, TimePicker, Typography } from 'antd'
+import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, Form, Input, Layout, List, Menu, Modal, Row, Space, Steps, Table, Tag, TimePicker, Typography, notification } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
@@ -41,7 +41,8 @@ function App() {
     <Layout className='container'>
       <Header
         style={{
-          backgroundColor: "white"
+          backgroundColor: "black",
+          color: "white",
         }}
       >
         <div style={{display: "flex", alignItems: "center"}}>
@@ -113,6 +114,16 @@ function App() {
           <Divider />
 
           <Card>
+            <Button
+              onClick={() => {
+                notification.success({
+                  message: "User Created Successfully"
+                })
+              }}
+            >
+              Show Notification
+            </Button>
+
             <Button onClick={() => setModalOpen(true)}>Add User</Button>
 
             <Button
