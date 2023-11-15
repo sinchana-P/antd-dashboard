@@ -1,6 +1,5 @@
-import * as DescriptorD from "node_modules\@faker-js\faker\dist\types\locales\it\company\descriptor.d";
 import { useState } from 'react'
-import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, Form, Input, Layout, List, Menu, Row, Space, Steps, Table, Tag, TimePicker, Typography } from 'antd'
+import { Anchor, Avatar, Button, Card, Col, Descriptions, Divider, Empty, Form, Input, Layout, List, Menu, Modal, Row, Space, Steps, Table, Tag, TimePicker, Typography } from 'antd'
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import "./styles/dashboard.css"
@@ -15,6 +14,7 @@ const { Link } = Anchor;
 import { faker } from '@faker-js/faker'
 import ButtonGroup from 'antd/es/button/button-group';
 import dayjs from 'dayjs';
+
 
 const generateData = () => {
   const dat = [];
@@ -35,6 +35,7 @@ const data = generateData()
 function App() {
 
   const [collapsed, setCollapsed] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <Layout className='container'>
@@ -112,6 +113,20 @@ function App() {
           <Divider />
 
           <Card>
+            <Button onClick={() => setModalOpen(true)}>Add User</Button>
+
+            <Button
+              danger
+              type="primary"
+              onClick={() => {
+                Modal.confirm({
+                  title: "Are u sure?",
+                  content: "Bye"
+                })
+              }}
+            >
+              Delete
+            </Button>
 
             {/* <List  
               bordered
@@ -253,6 +268,20 @@ function App() {
 
         </Content>
       </Layout>
+      <Modal
+        open={modalOpen}
+        onCancel={() => setModalOpen(false)} 
+        title={"Add A New User"}>
+        <Form>
+          <Form.Item label={"Name"}>
+            <Input />
+          </Form.Item>
+          <Form.Item label={"Email"}>
+            <Input />
+          </Form.Item>
+        </Form>
+
+      </Modal>
     </Layout>
   )
 }
