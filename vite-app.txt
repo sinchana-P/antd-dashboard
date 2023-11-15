@@ -1,0 +1,53 @@
+npm install -g create-vite
+
+create-vite my-react-app --template react
+
+cd my-react-app
+
+npm install
+
+npm run dev
+
+----------------------------
+It works:
+
+npm create vite@latest
+
+
+cd antd-dashboard
+npm install      
+npm run dev
+
+
+Terminal:
+
+npm i antd
+npm i react-icons
+
+REFER: react-icons
+https://react-icons.github.io/react-icons/
+----------------------------
+
+main.tsx
+
+import "antd/dist/reset.css"
+
+import { ConfigProvider } from "antd"
+import "antd/dist/reset.css"
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <ConfigProvider 
+      theme={{
+        token: {
+          colorPrimary: "#2123bf",
+        },
+      }}>
+      <App />
+    </ConfigProvider>
+  </React.StrictMode>,
+)
